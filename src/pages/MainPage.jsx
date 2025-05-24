@@ -11,7 +11,7 @@ function MainPage() {
         </div>
         <div className="explore">
           <button className="shop-btn">Shop NOW</button>
-          <button className="explore-btn">Explore All</button>
+          
         </div>
       </div>
       <div className="chatbot">

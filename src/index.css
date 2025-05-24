@@ -133,13 +133,13 @@ body {
 }
 
 
-.login-button {
+.login-button-navbar {
   background-color: #f0f0f0;
   color: #333;
   padding: 0;
 }
 
-.login-button:hover {
+.login-button-navbar:hover {
   background-color: #c6c4c4;
   transform: scale(1.05);
 }

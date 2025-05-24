@@ -23,8 +23,9 @@ function Navbar() {
             </div>
 
             <div className="buttons">
+                
                 <Link to="/cart"><button className="cart-icon"><img  src="src/assets/shopping-cart.svg" alt="" /></button></Link>
-                <Link to="/login"><button className="login-button">Login</button></Link>
+                <Link to="/login"><button className="login-button-navbar">Login</button></Link>
                 <Link to="/signup"><button className="signup-button">Sign Up</button></Link>
             </div>
         </div>
