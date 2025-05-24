@@ -1,5 +1,6 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import axios from 'axios';
 import Navbar from './components/Navbar';
 import MainPage from './pages/MainPage';
 import LoginPage from './pages/LoginPage';
@@ -24,9 +25,19 @@ const initialProducts = [
   { id: 6, name: 'Science Tutoring', category: 'Tutoring', price: 60, image: product1 },
 ];
 
+const backend = import.meta.env.VITE_BACKEND;
+
 function App() {
   const [products, setProducts] = useState(initialProducts);
-
+  useEffect(()=>{
+    const fetchProds = async ()=>{
+      const res =await axios.get(`${backend}/products`);
+      //console.log(res.data[0].imgid);
+      //console.log(res.data[0]._id);
+      setProducts(res.data);
+    } 
+    fetchProds(); 
+  },[])
   const handleNewProduct = (newProduct) => {
     setProducts(prev => [...prev, newProduct]);
   };

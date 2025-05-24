@@ -1,14 +1,17 @@
 import React, { useState } from 'react';
 import './upload.css';
-import product1 from '../assets/shoe.jpg';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 function Upload({ onProductUpload, existingProducts }) {
   const [form, setForm] = useState({
-    name: '',
+    title: '',
     category: '',
     price: '',
-    image: null
+    imageFile: null,
   });
+
+  const navigate = useNavigate(); 
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -18,38 +21,55 @@ function Upload({ onProductUpload, existingProducts }) {
   const handleImageChange = (e) => {
     const file = e.target.files[0];
     if (file) {
-      setForm((prev) => ({ ...prev, image: URL.createObjectURL(file) }));
+      setForm((prev) => ({
+        ...prev,
+        imageFile: file, 
+      }));
     }
   };
 
-  const handleSubmit = (e) => {
+  const backend = import.meta.env.VITE_BACKEND;
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!form.name || !form.category || !form.price || !form.image) {
+
+    const { title, category, price, imageFile } = form;
+
+    if (!title || !category || !price || !imageFile) {
       alert("All fields are required.");
       return;
     }
 
-    const newId = existingProducts.length ? Math.max(...existingProducts.map(p => p.id)) + 1 : 1;
+    const formData = new FormData();
+    formData.append("title", title);
+    formData.append("category", category);
+    formData.append("price", price);
+    formData.append("img", imageFile); 
 
-    const newProduct = {
-      id: newId,
-      name: form.name,
-      category: form.category,
-      price: parseFloat(form.price),
-      image: form.image || product1,
-    };
+    try {
+      const res = await axios.post(`${backend}/product`, formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
 
-    onProductUpload(newProduct);
-    alert("Product uploaded successfully!");
-    setForm({ name: '', category: '', price: '', image: null });
+      alert("Product uploaded!");
+      navigate('/shop');
+    } catch (err) {
+      console.error(err.response?.data || err.message);
+      alert("Upload failed!");
+    }
   };
 
   return (
     <div className="upload-container">
       <h2>Upload a New Product</h2>
       <form className="upload-form" onSubmit={handleSubmit}>
-        <label>Name:<input type="text" name="name" value={form.name} onChange={handleChange} /></label>
-        <label>Category:
+        <label>
+          Name:
+          <input type="text" name="title" value={form.title} onChange={handleChange} />
+        </label>
+        <label>
+          Category:
           <select name="category" value={form.category} onChange={handleChange}>
             <option value="">Select</option>
             <option value="Electronics">Electronics</option>
@@ -58,8 +78,14 @@ function Upload({ onProductUpload, existingProducts }) {
             <option value="Tutoring">Tutoring</option>
           </select>
         </label>
-        <label>Price:<input type="number" name="price" value={form.price} onChange={handleChange} /></label>
-        <label>Image:<input type="file" accept="image/*" onChange={handleImageChange} /></label>
+        <label>
+          Price:
+          <input type="number" name="price" value={form.price} onChange={handleChange} />
+        </label>
+        <label>
+          Image:
+          <input type="file" name="img" accept="image/*" onChange={handleImageChange} />
+        </label>
         <button type="submit">Upload Product</button>
       </form>
     </div>

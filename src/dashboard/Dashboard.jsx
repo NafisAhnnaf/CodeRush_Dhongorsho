@@ -8,6 +8,7 @@ function Dashboard(){
                 <p>Users</p>
                 <p>Products</p>
                 <p>Chart</p>
+                <p>asas</p>
             </div>
         </div>
     )

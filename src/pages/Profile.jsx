@@ -1,71 +1,49 @@
-import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import axios from "axios";
-import "./profile.css";
-
-const backend = import.meta.env.VITE_BACKEND;
-
-function Profile() {
-  const { id } = useParams();
-  const [userData, setUserData] = useState(null);
-  const [editableData, setEditableData] = useState({});
-
-  useEffect(() => {
-    const fetchUserData = async () => {
-      try {
-        const res = await axios.get(`${backend}/user/${id}`);
-        setUserData(res.data);
-        setEditableData(res.data);
-      } catch (err) {
-        alert("Failed to fetch user data");
-      }
-    };
-    fetchUserData();
-  }, [id]);
-
-  const handleUpdate = async () => {
-    try {
-      await axios.put(`${backend}/user/${id}`, editableData);
-      alert("Profile updated successfully");
-    } catch (err) {
-      alert("Failed to update profile");
-    }
-  };
-
-  if (!userData) return <div>Loading...</div>;
-
-  return (
-    <div className="profile-container">
-      <div className="profile-header">
-        <img
-          src={userData.photo || "https://via.placeholder.com/150"}
-          alt="User"
-          className="profile-pic"
-        />
-        <h2>{userData.name}</h2>
-      </div>
-
-      <div className="profile-info">
-        {Object.keys(userData).map((key) => {
-          if (key === "password" || key === "photo" || key === "id") return null;
-          return (
-            <div key={key} className="profile-field">
-              <label>{key}:</label>
-              <input
-                type="text"
-                value={editableData[key] || ""}
-                onChange={(e) =>
-                  setEditableData({ ...editableData, [key]: e.target.value })
-                }
-              />
+import React, {useState} from 'react'
+//css is in signup.css
+function Profile(){
+    return(
+        <div className="profile-mains">
+            <h1>Profile</h1>
+            <div className="profile-img">
+                <img src="" alt="" />
             </div>
-          );
-        })}
-        <button onClick={handleUpdate} className="update-btn">Update Info</button>
-      </div>
-    </div>
-  );
+            <div className="profile-infos">
+                <table>
+                    <tr>
+                        <th>Name</th>
+                        <th>Tabib</th>
+                    </tr>
+                    <tr>
+                        <th>Email</th>
+                        <th>tabibhassan.1604@iut-dhaka.edu</th>
+                    </tr>
+                    <tr>
+                        <th>Phone Number</th>
+                        <th>01300917471</th>
+                    </tr>
+                    <tr>
+                        <th>Date Of Birth</th>
+                        <th>14/04/2005</th>
+                    </tr>
+                    <tr>
+                        <th>University</th>
+                        <th>IUT</th>
+                    </tr>
+                    <tr>
+                        <th>Program</th>
+                        <th>SWE</th>
+                    </tr>
+                    <tr>
+                        <th>Year</th>
+                        <th>2023</th>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        
+
+    )
 }
 
-export default Profile;
-
+export default Profile
+ 

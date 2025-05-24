@@ -33,6 +33,22 @@ const products = [
     price: 100,
     quantity: 2,
     image: "src/assets/shoe.jpg"
+  },
+  {
+    id: 5,
+    name: "Tabib",
+    size: "11",
+    price: 100,
+    quantity: 2,
+    image: "src/assets/shoe.jpg"
+  },
+  {
+    id: 6,
+    name: "Tabib",
+    size: "11",
+    price: 100,
+    quantity: 2,
+    image: "src/assets/shoe.jpg"
   }
 ];
 

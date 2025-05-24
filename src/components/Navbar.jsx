@@ -29,6 +29,7 @@ function Navbar() {
                 <Link to="/upload"><p>Upload</p></Link>
                 <Link to="/dashboard"><p>Admin Panel</p></Link>
                 <Link to="/chatbot"><p>Chatbot</p></Link>
+                
             </div>
 
             <div className="center">
@@ -42,6 +43,13 @@ function Navbar() {
                 <Link to="/cart"><button className="cart-icon"><img  src="src/assets/shopping-cart.svg" alt="" /></button></Link>
                 <Link to="/login"><button className="login-button-navbar">Login</button></Link>
                 <Link to="/signup"><button className="signup-button">Sign Up</button></Link>
+                <div className="profile-icon">
+                    <button>Profile</button>
+                    <div className="dropdown-profile">
+                        <Link to="/profile"><p>Profile</p></Link>
+                        <Link><p>Logout</p></Link>
+                    </div>
+                </div>
             </div>
         </div>
     )
