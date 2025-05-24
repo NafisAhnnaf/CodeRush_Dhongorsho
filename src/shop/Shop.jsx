@@ -1,32 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import ProductCarousel from '/src/components/ProductCarousel';
 import './shop.css';
-
 import Card from '../components/Card';
-import product1 from '../assets/product_images/product_1.webp'; // import local image
-
-const productsData = [
-  {
-    id: 1,
-    name: 'Smartphone',
-    category: 'Electronics',
-    price: 299,
-    image: "",
-  },
-  {
-    id: 2,
-    name: 'Headphones',
-    category: 'Accessories',
-    price: 99,
-    image: 'https://via.placeholder.com/150',
-  },
-  // add more as needed
-];
-
 
 const categories = ['Electronics', 'Accessories', 'Stationaries', 'Tutoring'];
 
-function Shop() {
+function Shop({ products }) {
   const fullText = "WELCOME TO DHONGORSHO SHOP";
   const [text, setText] = useState("");
   const [index, setIndex] = useState(0);
@@ -43,16 +21,8 @@ function Shop() {
     }
   }, [index, fullText]);
 
-  const handleFilterChange = (e) => {
-    setFilter(e.target.value);
-  };
-
-  const handleSortChange = (e) => {
-    setSortOrder(e.target.value);
-  };
-
   const getFilteredProducts = () => {
-    let filtered = [...productsData];
+    let filtered = [...products];
     if (filter !== 'All') {
       filtered = filtered.filter((product) => product.category === filter);
     }
@@ -64,20 +34,15 @@ function Shop() {
     return filtered;
   };
 
-  const productsByCategory = categories.reduce((acc, category) => {
-    acc[category] = getFilteredProducts().filter((product) => product.category === category);
-    return acc;
-  }, {});
-
   return (
-    <div className="shop-mains">
-      <div className="shop-mains-upper">
+    <div className="shop-container">
+      <div className="shop-header">
         <h1 className="typing-heading">{text}</h1>
       </div>
       <div className="filters">
         <label>
           Category:
-          <select value={filter} onChange={handleFilterChange}>
+          <select value={filter} onChange={(e) => setFilter(e.target.value)}>
             <option value="All">All</option>
             {categories.map((cat) => (
               <option key={cat} value={cat}>{cat}</option>
@@ -86,21 +51,28 @@ function Shop() {
         </label>
         <label>
           Sort by Price:
-          <select value={sortOrder} onChange={handleSortChange}>
+          <select value={sortOrder} onChange={(e) => setSortOrder(e.target.value)}>
             <option value="default">Default</option>
             <option value="lowToHigh">Low to High</option>
             <option value="highToLow">High to Low</option>
           </select>
         </label>
-        <div className="product-grid">
-    {productsData
-      .filter(p => p.category === 'Electronics')
-      .map((product) => (
-        <Card key={product.id} product={product} />
-      ))}
-        </div>
-        </div>
-        </div>
+      </div>
+      {categories.map((category) => {
+        const categoryProducts = getFilteredProducts().filter((product) => product.category === category);
+        if (categoryProducts.length === 0) return null;
+        return (
+          <div key={category} className="category-section">
+            <h2>{category}</h2>
+            <div className="product-row">
+              {categoryProducts.map((product) => (
+                <Card key={product.id} product={product} />
+              ))}
+            </div>
+          </div>
+        );
+      })}
+    </div>
   );
 }
 

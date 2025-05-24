@@ -1,28 +1,42 @@
-@import url('https://fonts.googleapis.com/css2?family=Smooch+Sans:wght@100..900&family=WDXL+Lubrifont+TC&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Smooch+Sans:wght@100..900&display=swap');
 
-.shop-mains {
-  padding: 2rem;
+/* Root fix to allow scrolling */
+html, body {
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+  overflow-x: hidden;
   font-family: 'Smooch Sans', sans-serif;
 }
 
-.shop-mains-upper {
+/* Container */
+.shop-container {
+  padding: 2rem;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+/* Header */
+.shop-header {
   text-align: center;
   margin-bottom: 2rem;
 }
 
 .typing-heading {
   font-size: 2.5rem;
-  font-family: 'WDXL Lubrifont TC', sans-serif;
   color: #1f2937;
   white-space: nowrap;
   overflow: hidden;
   border-right: 0.15em solid transparent;
 }
 
+/* Filters */
 .filters {
   display: flex;
+  flex-wrap: wrap;
   gap: 1rem;
   margin-bottom: 2rem;
+  justify-content: center;
 }
 
 .filters label {
@@ -31,16 +45,84 @@
   font-weight: bold;
 }
 
-h2 {
-  margin-top: 2rem;
-  margin-bottom: 1rem;
+/* Category + Row */
+.category-section {
+  margin-bottom: 2.5rem;
 }
 
-.product-grid {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    padding: 1rem;
-    gap: 1rem;
+.category-section h2 {
+  margin-bottom: 1rem;
+  text-align: left;
+  padding-left: 1rem;
+  font-size: 1.5rem;
+  color: #333;
+}
+
+.product-row {
+  display: flex;
+  overflow-x: auto;
+  overflow-y: hidden;
+  gap: 1rem;
+  padding: 0 1rem 1rem 1rem;
+  scroll-behavior: smooth;
+}
+
+.product-row::-webkit-scrollbar {
+  height: 8px;
+}
+
+.product-row::-webkit-scrollbar-thumb {
+  background-color: #888;
+  border-radius: 4px;
+}
+
+.product-row::-webkit-scrollbar-thumb:hover {
+  background-color: #555;
+}
+
+/* Cards inside row should not shrink too much */
+.product-row > * {
+  flex: 0 0 auto;
+  min-width: 200px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .typing-heading {
+    font-size: 2rem;
+    text-align: center;
   }
-  
+
+  .filters {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .product-row {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+
+  .category-section h2 {
+    font-size: 1.3rem;
+  }
+}
+
+.upload-container, .shop-container {
+  padding: 20px;
+  max-width: 800px;
+  margin: auto;
+}
+
+.upload-form, .filters {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+@media (max-width: 768px) {
+  .product-row {
+    flex-direction: column;
+  }
+}
+

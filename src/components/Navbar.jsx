@@ -5,15 +5,16 @@ function Navbar() {
         <div className="nav">
             <div className="infos">
                 <Link to="/"><p>Home</p></Link>
-                <Link to="/about" className="dropdown">
-                    <p className='categories'>Categories</p>
+                <Link to="/shop" className="dropdown">
+                    <p className='categories'>Marketplace</p>
                     <div className="dropdown-menu">
-                        <p>Category 1</p>
-                        <p>Category 2</p>
-                        <p>Category 3</p>
+                        <p>Electronics</p>
+                        <p>Stationaries</p>
+                        <p>Accessories</p>
+                        <p>Tutoring</p>
                     </div>
                 </Link>
-                <Link to="/contact"><p>Contact</p></Link>
+                <Link to="/upload"><p>Upload</p></Link>
                 <Link to="/dashboard"><p>Dashboard</p></Link>
             </div>
 
