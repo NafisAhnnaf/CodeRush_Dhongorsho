@@ -1,6 +1,6 @@
 import React from 'react';
 import './MainPage.css';
-
+import { Link } from 'react-router-dom'
 function MainPage() {
   return (
     <div className="MainBody">
@@ -10,7 +10,7 @@ function MainPage() {
           <h2>EVERY WORK</h2>
         </div>
         <div className="explore">
-          <button className="shop-btn">Shop NOW</button>
+        <Link to="/shop"><button className="shop-btn">Shop NOW</button></Link>
           
         </div>
       </div>
