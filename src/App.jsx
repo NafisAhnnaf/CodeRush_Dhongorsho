@@ -4,14 +4,16 @@ import Navbar from './components/Navbar'
 import MainPage from './pages/MainPage'
 import LoginPage from './pages/LoginPage'
 import SignupPage from './pages/SignupPage'
-import About from './pages/About'
+import About from './pages/Category'
 import Contact from './pages/Contact'
+import Cart from './pages/Cart'
 
 function App() {
   return (
     <Router>
       <Navbar />
       <Routes>
+        <Route path='/cart' element={<Cart/>} />
         <Route path="/" element={<MainPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/signup" element={<SignupPage />} />

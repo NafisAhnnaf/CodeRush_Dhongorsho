@@ -1,34 +1,31 @@
-import React, { useEffect } from 'react';
+// LoginPage.jsx
+import React from 'react';
 import './login.css';
 
 const LoginPage = () => {
-
   return (
-    <div className="container">
-      <div className="left-panel">
-        
-        <h1 className="headline">Shop, Smile, <br />Repeat</h1>
-        <p className="author">By Dhonghorsho</p>
+    <div className="login-container">
+      <div className="login-left">
+        <div className="particles"></div>
+        <h1 className="login-title">Welcome Back!</h1>
+        <p className="login-subtitle">Let's get you signed in</p>
       </div>
-      <div className="right-panel">
-        <h2 className="register-title">Register</h2>
-        <form className="register-form">
-          <label>First Name:</label>
-          <input type="text" placeholder="John" />
 
-          <label>Last Name:</label>
-          <input type="text" placeholder="Doe" />
+      <div className="login-right">
+        <form className="login-form">
+          <h2 className="form-title">Login</h2>
+          <label>Email</label>
+          <input type="email" placeholder="you@example.com" />
 
-          <label>Institutional mail</label>
-          <input type="email" placeholder="example@university.edu" />
+          <label>Password</label>
+          <input type="password" placeholder="••••••••" />
 
-          <label>Enter Password:</label>
-          <input type="password" placeholder="********" />
+          <div className="remember-me">
+            <input type="checkbox" id="remember" />
+            <label htmlFor="remember">Remember me</label>
+          </div>
 
-          <label>Re-enter Password:</label>
-          <input type="password" placeholder="********" />
-
-          <button type="submit" className="signup-btn">Sign Up</button>
+          <button type="submit" className="login-button">Sign In</button>
         </form>
       </div>
     </div>
