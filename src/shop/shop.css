@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Smooch+Sans:wght@100..900&display=swap');
 
-/* Root fix to allow scrolling */
+
 html, body {
   margin: 0;
   padding: 0;
@@ -9,14 +9,14 @@ html, body {
   font-family: 'Smooch Sans', sans-serif;
 }
 
-/* Container */
+
 .shop-container {
   padding: 2rem;
   box-sizing: border-box;
   width: 100%;
 }
 
-/* Header */
+
 .shop-header {
   text-align: center;
   margin-bottom: 2rem;
@@ -30,7 +30,7 @@ html, body {
   border-right: 0.15em solid transparent;
 }
 
-/* Filters */
+
 .filters {
   display: flex;
   flex-wrap: wrap;
@@ -45,7 +45,7 @@ html, body {
   font-weight: bold;
 }
 
-/* Category + Row */
+
 .category-section {
   margin-bottom: 2.5rem;
 }
@@ -80,13 +80,13 @@ html, body {
   background-color: #555;
 }
 
-/* Cards inside row should not shrink too much */
+
 .product-row > * {
   flex: 0 0 auto;
   min-width: 200px;
 }
 
-/* Responsive */
+
 @media (max-width: 768px) {
   .typing-heading {
     font-size: 2rem;

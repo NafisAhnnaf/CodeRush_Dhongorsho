@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './shop.css';
 import Card from '../components/Card';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 const categories = ['Electronics', 'Accessories', 'Stationaries', 'Tutoring'];
 

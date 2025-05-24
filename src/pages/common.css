@@ -1,8 +1,4 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
+
   
   .cart {
     background: linear-gradient(135deg, #dbeafe, #e0f2fe, #f0f9ff);
@@ -29,7 +25,8 @@
     width: 80%;
   }
   
-  /* Layout */
+
+
   .cart-content {
     display: flex;
     justify-content: space-between;
@@ -37,7 +34,7 @@
     gap: 2rem;
   }
   
-  /* Left - Products */
+
   .cart-left {
     height: 100vh;
     width: 50%;
@@ -48,7 +45,7 @@
     gap: 2rem;
   }
   
-  /* Product Item */
+
   .cart-item {
     display: flex;
     align-items: center;
@@ -76,7 +73,7 @@
     object-fit: cover;
   }
   
-  /* Product Details */
+
   .cart-details {
     flex: 1;
   }
@@ -120,7 +117,7 @@
     color: #333;
   }
   
-  /* Right - Summary */
+
 
   .cart-right {
     width: 50%;
@@ -232,7 +229,7 @@
     margin-top: 0.3rem;
   }
   
-  /* Animation */
+
   @keyframes rotate360 {
     from {
       transform: rotate(0deg);
@@ -242,7 +239,7 @@
     }
   }
   
-  /* Responsive */
+
   @media (max-width: 1024px) {
     .cart-content {
       flex-direction: column;
@@ -274,7 +271,7 @@
   }
   
 
-  /* Card.jsx begins here*/
+
   .product-card {
     width: 200px;
     height: 300px;
@@ -317,18 +314,14 @@
     color: #2563eb;
   }
   
-  
 
-  /*Chatbot.jsx begins here*/
-  /* Chatbot Floating Container */
 .chatbot-container {
     position: fixed;
     bottom: 2rem;
     right: 2rem;
     z-index: 999;
   }
-  
-  /* Floating Button */
+
   .chatbot-float {
     background: linear-gradient(135deg, #3b82f6, #60a5fa);
     height: 4rem;
@@ -352,7 +345,7 @@
     animation: pulse 2s infinite;
   }
   
-  /* Chat Popup Box */
+
   .chat-popup {
     position: absolute;
     bottom: 5rem;
@@ -368,7 +361,7 @@
     flex-direction: column;
   }
   
-  /* Header */
+
   .chat-header {
     padding: 1rem;
     background: #3b82f6;
@@ -377,14 +370,14 @@
     font-size: 1.1rem;
   }
   
-  /* Body */
+
   .chat-body {
     flex: 1;
     padding: 1rem;
     overflow-y: auto;
   }
   
-  /* Robot animation */
+
   @keyframes pulse {
     0% {
       transform: scale(1);

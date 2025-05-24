@@ -15,6 +15,7 @@ import Upload from './upload/Upload';
 import product1 from './assets/shoe.jpg';
 import Profile from './pages/Profile';
 import Auth from './components/Auth';
+import ProductTemplate from './pages/ProductTemplate';
 
 const initialProducts = [
   { id: 1, name: 'Smartphone', category: 'Electronics', price: 299, image: product1 },
@@ -59,6 +60,7 @@ function App() {
           <Route path="/contact" element={<Contact />} />
           <Route path="/shop" element={<  Shop products={products} />} />
           <Route path="/chatbot" element={<Chatbot />} />
+          <Route path="/product_template" element={<ProductTemplate />} />
         </Route>
       </Routes>
       

@@ -34,7 +34,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  pointer-events: none; /* Prevents blocking nav clicks on smaller screens */
+  pointer-events: none; 
   z-index: 1;
 }
 
@@ -50,7 +50,7 @@ body {
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   text-align: center;
   white-space: nowrap;
-  pointer-events: auto; /* Enable clicks */
+  pointer-events: auto; 
 }
 
 
@@ -64,7 +64,7 @@ body {
   border-radius: 4px;
 }
 
-/* Dropdown menu hidden by default */
+
 .dropdown-menu {
   display: none;
   position: absolute;
@@ -75,7 +75,7 @@ body {
   overflow: hidden;
 }
 
-/* Show dropdown on hover */
+
 .dropdown:hover .dropdown-menu {
   display: block;
 }
@@ -222,9 +222,7 @@ body {
 }
 
 
-/*Profile.jsx starts here*/
 
-/*Profile.jsx ends here*/
 
 .cart-icon{
   margin-top: 0px;

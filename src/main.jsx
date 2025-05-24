@@ -10,6 +10,8 @@ import './shop/shop.css'
 import './dashboard/dashboard.css'
 import './upload/upload.css'
 import './pages/profile.css'
+import './pages/producttemplate.css'
+
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <App />
