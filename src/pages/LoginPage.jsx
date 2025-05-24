@@ -1,4 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
+import {useNavigate} from 'react-router-dom'
+import axios from 'axios';
 import "./login.css";
 
 const punchlines = [
@@ -7,13 +9,45 @@ const punchlines = [
   "Shop. Smile. Repeat"
 ];
 
-export default function LoginPage() {
+const backend =  import.meta.env.VITE_BACKEND;
+
+function LoginPage() {
   const [displayedText, setDisplayedText] = useState("");
   const [index, setIndex] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
   const [loopNum, setLoopNum] = useState(0);
   const [typingSpeed, setTypingSpeed] = useState(100);
   const canvasRef = useRef(null);
+  //nafis
+  const [remember, setRemember]= useState(false);
+  const [email, setEmail]= useState('');
+  const [password, setPassword]= useState('');
+  const navigate = useNavigate();
+  const handleLogin = async (e)=>{
+    e.preventDefault();
+    try{
+        const res = await axios.post(`${backend}/login`, {em: email, ps: password});
+        alert("Logged in successfully");
+        localStorage.setItem("userID", res.data.id);
+        navigate('/dashboard');
+    }catch(err){
+      if(err.response){
+        const status = err.response.status;
+        if(status===401){
+          alert("Invalid Credential. "+ err.response.data.msg);
+        }
+        else if(status===500){
+          alert("Internal Server Error. "+ err.response.data.msg);
+        }
+        else{
+          alert("Something went wrong. "+err.response.data.msg);
+        }
+      }
+      else{
+        alert("Unknown error");
+      }
+    }
+  }
 
   useEffect(() => {
     const handleTyping = () => {
@@ -104,15 +138,17 @@ export default function LoginPage() {
         <form className="login-form" onSubmit={(e) => e.preventDefault()}>
           <h2>Login</h2>
           <label htmlFor="email">Email</label>
-          <input type="email" id="email" placeholder="Enter your email" required />
+          <input type="email" id="email" placeholder="Enter your email" required onChange={e=>setEmail(e.target.value)} />
           <label htmlFor="password">Password</label>
-          <input type="password" id="password" placeholder="Enter your password" required />
+          <input type="password" id="password" placeholder="Enter your password" required  onChange={e=>setPassword(e.target.value)}/>
           <div className="forgot-password">
             <a href="#">Forgot password?</a>
           </div>
-          <button type="submit">Sign In</button>
+          <button onClick={handleLogin} type="submit">Sign In</button>
         </form>
       </div>
     </div>
   );
 }
+
+export default LoginPage

@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
-
+import Card from '../components/Card';
 function Shop(){
     return(
         <div className="shop-mains">
-            <p>Shop</p>
+            <h2>Electronics</h2>
+            <Card/>
         </div>
     )
 }

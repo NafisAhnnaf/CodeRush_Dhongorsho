@@ -273,3 +273,11 @@
     }
   }
   
+
+  /* Card.jsx begins here*/
+  .main-shop-card{
+    height: 15rem;
+    width: 12rem;
+    background-color: #007bff;
+  }
+
