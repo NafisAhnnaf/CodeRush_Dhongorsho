@@ -8,6 +8,7 @@ import About from './pages/Category'
 import Contact from './pages/Contact'
 import Cart from './pages/Cart'
 import Shop from './shop/Shop'
+import Chatbot from './components/Chatbot'
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
         <Route path="/contact" element={<Contact />} />
         <Route path="/shop" element={<Shop />} />
       </Routes>
+      <Chatbot />
     </Router>
   )
 }

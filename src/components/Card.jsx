@@ -3,11 +3,9 @@ import { Link } from 'react-router-dom'
 
 function Card(){
     return(
-        // <div className="main-shop-card">
-        //     <p>Card</p>
-        // </div>
-        <>
-        </>
+        <div className="main-shop-card">
+            <p>Card</p>
+        </div>
     )
 }
 

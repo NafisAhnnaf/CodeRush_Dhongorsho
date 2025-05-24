@@ -281,3 +281,9 @@
     background-color: #007bff;
   }
 
+  /*Chatbot.jsx begins here*/
+  .chatbot-mains{
+    background-color: red;
+    height: 300px;
+    width: 300px;
+  }
