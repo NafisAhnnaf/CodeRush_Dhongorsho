@@ -12,6 +12,8 @@ import Chatbot from './components/Chatbot';
 import Dashboard from './dashboard/Dashboard';
 import Upload from './upload/Upload';
 import product1 from './assets/shoe.jpg';
+import Profile from './pages/Profile';
+import Auth from './components/Auth';
 
 const initialProducts = [
   { id: 1, name: 'Smartphone', category: 'Electronics', price: 299, image: product1 },
@@ -33,19 +35,22 @@ function App() {
     <Router>
       <Navbar />
       <Routes>
-        <Route path="/upload" element={
-          <Upload existingProducts={products} onProductUpload={handleNewProduct} />
-        } />
-        <Route path="/" element={<MainPage />} />
-        <Route path="/cart" element={<Cart />} />
-        <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/signup" element={<SignupPage />} />
-        <Route path="/marketplace" element={<Marketplace />} />
-        <Route path="/contact" element={<Contact />} />
-        <Route path="/shop" element={<Shop products={products} />} />
+        <Route element={<Auth/>}>
+          <Route path="/upload" element={
+            <Upload existingProducts={products} onProductUpload={handleNewProduct} />
+          } />
+          <Route path="/" element={<MainPage />} />
+          <Route path="/cart" element={<Cart />} />
+          <Route path="/dashboard/:id" element={<Dashboard />} />
+          <Route path="/marketplace" element={<Marketplace />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/shop" element={<  Shop products={products} />} />
+          <Route path="/chatbot" element={<Chatbot />} />
+        </Route>
       </Routes>
-      <Chatbot />
+      
     </Router>
   );
 }

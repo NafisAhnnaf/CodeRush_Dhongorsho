@@ -1,11 +1,26 @@
 import React, { useEffect, useRef, useState } from "react";
 import "./signup.css";
+import axios from 'axios';
+import { useNavigate } from "react-router-dom";
 
 const punchlines = [
   "Join Us, Join the Future",
   "Your Journey Begins Here",
   "Be a Part of Dhongorsho"
 ];
+
+const UniDomains = [
+  'du.ac.bd', 'ru.ac.bd', 'cu.ac.bd', 'ju.edu.bd', 'iut-dhaka.edu',
+  'buet.ac.bd', 'ku.ac.bd', 'kuet.ac.bd', 'ruet.ac.bd', 'cuet.ac.bd',
+  'sust.edu', 'just.edu.bd', 'hstu.ac.bd', 'mbstu.ac.bd', 'pust.ac.bd',
+  'brur.ac.bd', 'nsu.edu.bd', 'bracu.ac.bd', 'iub.edu.bd', 'aiub.edu',
+  'eastwest.edu', 'uiu.ac.bd', 'ulab.edu.bd', 'daffodilvarsity.edu.bd',
+  'green.edu.bd', 'diu.edu.bd', 'ewubd.edu', 'seu.edu.bd', 'presidency.edu.bd',
+  'uap-bd.edu', 'manarat.ac.bd', 'bup.edu.bd', 'sub.edu.bd', 'nstu.edu.bd',
+  'pu.ac.bd', 'uits.edu.bd'
+];
+
+const backend = import.meta.env.VITE_BACKEND;
 
 export default function SignupPage() {
   const [displayedText, setDisplayedText] = useState("");
@@ -14,8 +29,9 @@ export default function SignupPage() {
   const [loopNum, setLoopNum] = useState(0);
   const [typingSpeed, setTypingSpeed] = useState(100);
   const canvasRef = useRef(null);
+  const navigate = useNavigate();
 
-  const totalSteps = 3; // e.g. 4 steps
+  const totalSteps = 3;
   const [visibility, setVisibility] = useState(Array(totalSteps).fill('hidden'));
   const [count, setCount] = useState(0);
   const [nextBtn, setNextBtn] = useState('');
@@ -23,30 +39,21 @@ export default function SignupPage() {
   const [submitBtn, setSubmitBtn] = useState('hidden');
 
   const handleNext = () => {
-    if (count < totalSteps - 1) {
-      setCount(prev => prev + 1);
-    }
+    if (count < totalSteps - 1) setCount(prev => prev + 1);
   };
 
   const handleBack = () => {
-    if (count > 0) {
-      setCount(prev => prev - 1);
-    }
+    if (count > 0) setCount(prev => prev - 1);
   };
 
   useEffect(() => {
-    // Set visibility for current step only
     const updatedVisibility = Array(totalSteps).fill('hidden');
     updatedVisibility[count] = 'flex';
     setVisibility(updatedVisibility);
-
-    // Handle button visibility
     setBackBtn(count === 0 ? 'hidden' : '');
     setNextBtn(count >= totalSteps - 1 ? 'hidden' : '');
     setSubmitBtn(count === totalSteps - 1 ? '' : 'hidden');
   }, [count]);
-
-
 
   useEffect(() => {
     const handleTyping = () => {
@@ -124,78 +131,106 @@ export default function SignupPage() {
     animate();
   }, []);
 
-  const handleSubmit = (e) => {
+  const [role, setRole] = useState('student');
+  const [form, setForm] = useState({
+    nm: "", em: "", ps: "", confirm: "", ph: "", db: "",
+    un: "", dp: "", pr: "", yr: "", profile: null
+  });
+
+  const handleChange = (e) => {
+    const { name, value, files } = e.target;
+
+    if (name === "profile") {
+      setForm({ ...form, profile: files[0] });
+    } else {
+      setForm({ ...form, [name]: value });
+    }
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    const email = form.em;
+    const domain = email.split('@')[1];
+    if (domain && !UniDomains.includes(domain)) {
+      alert("Please use your university-issued email address.");
+    }
+    if (form.ps !== form.confirm) {
+      return alert("Passwords do not match.");
+    }
 
-    // You can send this data to your backend API here
-    const formData = new FormData(e.target);
+    const formData = new FormData();
+    for (const key in form) {
+      if (key !== "confirm") formData.append(key, form[key]);
+    }
+    formData.append("role", role);
 
-    const userData = Object.fromEntries(formData.entries());
-    console.log("Submitted Signup Data:", userData);
+    try {
+      const res = await axios.post(`${backend}/signup`, formData, {
+        headers: { "Content-Type": "multipart/form-data" },
+      });
 
-    // Placeholder: Implement your backend call (e.g., Axios or fetch)
+      alert("Signup successful!");
+      navigate('/login');
+    } catch (err) {
+      console.error(err.response?.data || err.message);
+      alert("Signup failed!");
+    }
   };
 
   return (
-    <div className="signup-container ">
+    <div className="signup-container">
+      <canvas ref={canvasRef} className="background-canvas"></canvas>
+
       <div className="left-panel flex flex-col justify-center items-center">
-        <form className="signup-form bg-amber-50 rounded-4xl" onSubmit={handleSubmit}>
+        <form className="signup-form bg-amber-50 rounded-4xl"
+              onSubmit={handleSubmit} encType="multipart/form-data">
           <h2>Signup</h2>
 
-          <div className={`flex-col text-2xl h-[400px] ${visibility[0]}`}> 
+          <div className={`flex-col text-2xl h-[400px] ${visibility[0]}`}>
             <label>Name</label>
-            <input name="name" type="text" required />
+            <input name="nm" type="text" required onChange={handleChange} />
 
             <label>Email</label>
-            <input name="email" type="email" required />
+            <input name="em" type="email" required onChange={handleChange}  />
 
             <label>Password</label>
-            <input name="password" type="password" required />
+            <input name="ps" type="password" required onChange={handleChange} />
 
-            <label>Password</label>
-            <input name="confirm-password" type="password" required />
+            <label>Confirm Password</label>
+            <input name="confirm" type="password" required onChange={handleChange} />
           </div>
-
 
           <div className={`flex-col text-2xl h-[400px] ${visibility[1]}`}>
             <label>Phone</label>
-            <input name="phone" type="tel" required />
+            <input name="ph" type="tel" required onChange={handleChange} />
 
             <label>Date of Birth</label>
-            <input name="dob" type="date" required />
+            <input name="db" type="date" required onChange={handleChange} />
+
+            <label>Upload Profile Picture</label>
+            <input type="file" name="profile" accept="image/*" onChange={handleChange} />
           </div>
 
-
-          <div className={`flex-col ${visibility[2]}`}>
+          <div className={`flex-col text-2xl h-[400px] ${visibility[2]}`}>
             <label>University</label>
-            <input name="university" type="text" required />
+            <input name="un" type="text" required onChange={handleChange} />
 
             <label>Department</label>
-            <input name="department" type="text" required />
+            <input name="dp" type="text" required onChange={handleChange} />
 
             <label>Program</label>
-            <input name="program" type="text" required />
+            <input name="pr" type="text" required onChange={handleChange} />
 
             <label>Year</label>
-            <input name="year" type="number" required />
+            <input name="yr" type="number" required onChange={handleChange} />
           </div>
-          <div>
 
-          </div>
-          <div className="flex justify-between">
+          <div className="flex justify-between mt-4">
             <button className={backBtn} type="button" onClick={handleBack}>Back</button>
             <button className={nextBtn} type="button" onClick={handleNext}>Next</button>
-            <button className ={submitBtn} type="submit">Sign Up</button>
+            <button className={submitBtn} type="submit">Submit</button>
           </div>
         </form>
-      </div>
-
-      <div className="right-panel">
-        <canvas ref={canvasRef} className="particles"></canvas>
-        <div className="overlay">
-          <div className="company-name">Dhongorsho</div>
-          <div className="punchline-type">{displayedText}&nbsp;</div>
-        </div>
       </div>
     </div>
   );

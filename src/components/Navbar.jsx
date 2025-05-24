@@ -1,6 +1,18 @@
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom'
 
 function Navbar() {
+    // const [isLogged, setIsLogged] = useState(false);
+    // const id = localStorage.getItem('userID');
+
+    // useEffect(()=>{
+    //     if(id){
+    //         setIsLogged(true);
+    //     }
+    //     else{
+    //         setIsLogged(false);
+    //     }
+    // }, [id])
     return (
         <div className="nav">
             <div className="infos">
@@ -15,7 +27,8 @@ function Navbar() {
                     </div>
                 </Link>
                 <Link to="/upload"><p>Upload</p></Link>
-                <Link to="/dashboard"><p>Dashboard</p></Link>
+                <Link to="/dashboard"><p>Admin Panel</p></Link>
+                <Link to="/chatbot"><p>Chatbot</p></Link>
             </div>
 
             <div className="center">

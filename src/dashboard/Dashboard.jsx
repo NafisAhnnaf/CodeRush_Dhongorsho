@@ -6,7 +6,7 @@ function Dashboard(){
         <div className="dashboard-mains">
             <div className="dashboard-left">
                 <p>Users</p>
-                <p>Pricing</p>
+                <p>Products</p>
                 <p>Chart</p>
             </div>
         </div>

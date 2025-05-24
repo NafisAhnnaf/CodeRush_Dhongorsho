@@ -25,11 +25,12 @@ function LoginPage() {
   const navigate = useNavigate();
   const handleLogin = async (e)=>{
     e.preventDefault();
-    try{
-        const res = await axios.post(`${backend}/login`, {em: email, ps: password});
-        alert("Logged in successfully");
-        localStorage.setItem("userID", res.data.id);
-        navigate('/dashboard');
+    try {
+      const res = await axios.post(`${backend}/login`, { em: email, ps: password });
+      alert("Logged in successfully");
+      localStorage.setItem("userID", res.data.id);
+      onLogin(res.data.id); // <-- call parent callback
+      navigate(`/profile/${res.data.id}`);
     }catch(err){
       if(err.response){
         const status = err.response.status;

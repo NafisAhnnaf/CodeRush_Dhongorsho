@@ -9,6 +9,7 @@ import './pages/common.css'
 import './shop/shop.css'
 import './dashboard/dashboard.css'
 import './upload/upload.css'
+import './pages/profile.css'
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <App />
