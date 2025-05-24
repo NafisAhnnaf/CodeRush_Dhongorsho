@@ -1,0 +1,155 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+.login-mains {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #1e3c72, #2a5298);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+
+.login-body {
+    background: rgba(255, 255, 255, 0.896);
+    width: 90%;
+    max-width: 400px;
+    padding: 2.5rem;
+    border-radius: 1rem;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
+    
+}
+
+.login-body:hover {
+    transform: scale(1.02);
+}
+
+
+.login-body h1 {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: #1e3c72;
+    font-size: 30px;
+    font-weight: 600;
+    font-family: Cambria;
+
+}
+
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.login-form label {
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+    color: #333;
+}
+
+
+.login-input {
+    padding: 0.75rem;
+    border: 1px solid #ccc;
+    border-radius: 0.5rem;
+    margin-bottom: 1.2rem;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.login-input:focus {
+    border-color: #1e3c72;
+    outline: none;
+    box-shadow: 0 0 8px rgba(30, 60, 114, 0.5);
+}
+
+
+.login-button-main {
+    background-color: #1e3c72;
+    color: white;
+    padding: 0.75rem;
+    border: none;
+    border-radius: 0.5rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.login-button-main:hover {
+    background-color: #16325c;
+    transform: translateY(-2px);
+}
+
+
+.remember-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-bottom: 1.2rem;
+}
+
+
+.remember-label {
+    display: flex;
+    align-items: center;
+    font-size: 0.9rem;
+    color: #333;
+    cursor: pointer;
+}
+
+
+.remember-toggle {
+    display: none;
+}
+
+
+.custom-toggle {
+    width: 40px;
+    height: 20px;
+    background-color: #ccc;
+    border-radius: 20px;
+    position: relative;
+    margin-right: 10px;
+    transition: background-color 0.3s ease;
+}
+
+.custom-toggle::before {
+    content: "";
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    background-color: white;
+    border-radius: 50%;
+    top: 1px;
+    left: 1px;
+    transition: transform 0.3s ease;
+}
+
+
+.remember-toggle:checked + .custom-toggle {
+    background-color: #1e3c72;
+}
+
+.remember-toggle:checked + .custom-toggle::before {
+    transform: translateX(20px);
+}
+
+.hr-line{
+    margin-top: 15px;
+    color: rgb(24, 24, 95)
+}
+
+.Facebook {
+}
+
+.Facebook:hover{
+    scale: 1.1;
+    transition: all 0.3s ease;
+}
