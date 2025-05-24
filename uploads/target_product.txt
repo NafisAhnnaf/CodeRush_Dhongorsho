@@ -1,0 +1,14 @@
+{
+    "products": [
+      {
+        "product_id": "P001",
+        "product_name": "Apple iPhone 14",
+        "category": "Electronics",
+        "brand": "Apple",
+        "condition": "Used - Like New",
+        "year": 2022,
+        "description": "128GB, Blue, minor signs of wear, battery health 90%",
+        "seller_rating": 4.8
+      },
+    ]
+}

@@ -1,0 +1,48 @@
+{
+    "products": [
+      {
+        "product_id": "P001",
+        "product_name": "Apple iPhone 13",
+        "category": "Electronics",
+        "brand": "Apple",
+        "price": 699.99,
+        "condition": "Used - Like New",
+        "year": 2022,
+        "description": "128GB, Blue, minor signs of wear, battery health 90%",
+        "seller_rating": 4.8
+      },
+      {
+        "product_id": "P002",
+        "product_name": "Samsung Galaxy S21",
+        "category": "Electronics",
+        "brand": "Samsung",
+        "price": 599.00,
+        "condition": "Used - Good",
+        "year": 2021,
+        "description": "128GB, Phantom Gray, light scratches on screen",
+        "seller_rating": 4.5
+      },
+      {
+        "product_id": "P003",
+        "product_name": "Sony WH-1000XM4 Headphones",
+        "category": "Audio",
+        "brand": "Sony",
+        "price": 279.99,
+        "condition": "New",
+        "year": 2023,
+        "description": "Noise-cancelling, black, unopened box",
+        "seller_rating": 4.9
+      },
+      {
+        "product_id": "P004",
+        "product_name": "Dell XPS 13 Laptop",
+        "category": "Computers",
+        "brand": "Dell",
+        "price": 899.50,
+        "condition": "Refurbished",
+        "year": 2022,
+        "description": "Intel i7, 16GB RAM, 512GB SSD, clean condition",
+        "seller_rating": 4.7
+      }
+    ]
+}
