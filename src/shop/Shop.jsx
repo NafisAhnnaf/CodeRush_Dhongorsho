@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './shop.css';
 import Card from '../components/Card';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const categories = ['Electronics', 'Accessories', 'Stationaries', 'Tutoring'];
 
@@ -67,7 +67,7 @@ function Shop({ products }) {
             <h2>{category}</h2>
             <div className="product-row">
               {categoryProducts.map((product) => (
-                <Card key={product.id} product={product} />
+                <Link to="/product_template"><Card key={product.id} product={product} /></Link>
               ))}
             </div>
           </div>
