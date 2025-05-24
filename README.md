@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Product Price Range Predictor
 
 This project uses AI to predict price ranges for products based on similar items in a database. It utilizes Google's Gemini AI model and vector similarity search to provide accurate minimum and maximum price predictions.
@@ -58,3 +59,7 @@ Feel free to submit issues and enhancement requests!
 ## License
 
 [MIT License](LICENSE) 
+=======
+# CodeRush_Dhongorsho
+CodeRush Hackathon Project
+>>>>>>> 0b5d6d0d573eeeb19597e4ede4f27df7ef38f157
