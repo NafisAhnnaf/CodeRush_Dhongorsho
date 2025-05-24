@@ -1,19 +1,52 @@
 import React, { useEffect, useRef, useState } from "react";
-import "./login.css";
+import "./signup.css";
 
 const punchlines = [
-  "Your Style, Your Story",
-  "Where Fashion Meets Fun",
-  "Shop. Smile. Repeat"
+  "Join Us, Join the Future",
+  "Your Journey Begins Here",
+  "Be a Part of Dhongorsho"
 ];
 
-export default function LoginPage() {
+export default function SignupPage() {
   const [displayedText, setDisplayedText] = useState("");
   const [index, setIndex] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
   const [loopNum, setLoopNum] = useState(0);
   const [typingSpeed, setTypingSpeed] = useState(100);
   const canvasRef = useRef(null);
+
+  const totalSteps = 3; // e.g. 4 steps
+  const [visibility, setVisibility] = useState(Array(totalSteps).fill('hidden'));
+  const [count, setCount] = useState(0);
+  const [nextBtn, setNextBtn] = useState('');
+  const [backBtn, setBackBtn] = useState('hidden');
+  const [submitBtn, setSubmitBtn] = useState('hidden');
+
+  const handleNext = () => {
+    if (count < totalSteps - 1) {
+      setCount(prev => prev + 1);
+    }
+  };
+
+  const handleBack = () => {
+    if (count > 0) {
+      setCount(prev => prev - 1);
+    }
+  };
+
+  useEffect(() => {
+    // Set visibility for current step only
+    const updatedVisibility = Array(totalSteps).fill('hidden');
+    updatedVisibility[count] = 'flex';
+    setVisibility(updatedVisibility);
+
+    // Handle button visibility
+    setBackBtn(count === 0 ? 'hidden' : '');
+    setNextBtn(count >= totalSteps - 1 ? 'hidden' : '');
+    setSubmitBtn(count === totalSteps - 1 ? '' : 'hidden');
+  }, [count]);
+
+
 
   useEffect(() => {
     const handleTyping = () => {
@@ -91,27 +124,78 @@ export default function LoginPage() {
     animate();
   }, []);
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    // You can send this data to your backend API here
+    const formData = new FormData(e.target);
+
+    const userData = Object.fromEntries(formData.entries());
+    console.log("Submitted Signup Data:", userData);
+
+    // Placeholder: Implement your backend call (e.g., Axios or fetch)
+  };
+
   return (
-    <div className="login-container">
-      <div className="left-panel">
+    <div className="signup-container ">
+      <div className="left-panel flex flex-col justify-center items-center">
+        <form className="signup-form bg-amber-50 rounded-4xl" onSubmit={handleSubmit}>
+          <h2>Signup</h2>
+
+          <div className={`flex-col text-2xl h-[400px] ${visibility[0]}`}> 
+            <label>Name</label>
+            <input name="name" type="text" required />
+
+            <label>Email</label>
+            <input name="email" type="email" required />
+
+            <label>Password</label>
+            <input name="password" type="password" required />
+
+            <label>Password</label>
+            <input name="confirm-password" type="password" required />
+          </div>
+
+
+          <div className={`flex-col text-2xl h-[400px] ${visibility[1]}`}>
+            <label>Phone</label>
+            <input name="phone" type="tel" required />
+
+            <label>Date of Birth</label>
+            <input name="dob" type="date" required />
+          </div>
+
+
+          <div className={`flex-col ${visibility[2]}`}>
+            <label>University</label>
+            <input name="university" type="text" required />
+
+            <label>Department</label>
+            <input name="department" type="text" required />
+
+            <label>Program</label>
+            <input name="program" type="text" required />
+
+            <label>Year</label>
+            <input name="year" type="number" required />
+          </div>
+          <div>
+
+          </div>
+          <div className="flex justify-between">
+            <button className={backBtn} type="button" onClick={handleBack}>Back</button>
+            <button className={nextBtn} type="button" onClick={handleNext}>Next</button>
+            <button className ={submitBtn} type="submit">Sign Up</button>
+          </div>
+        </form>
+      </div>
+
+      <div className="right-panel">
         <canvas ref={canvasRef} className="particles"></canvas>
         <div className="overlay">
           <div className="company-name">Dhongorsho</div>
           <div className="punchline-type">{displayedText}&nbsp;</div>
         </div>
-      </div>
-      <div className="right-panel">
-        <form className="login-form" onSubmit={(e) => e.preventDefault()}>
-          <h2>Login</h2>
-          <label htmlFor="email">Email</label>
-          <input type="email" id="email" placeholder="Enter your email" required />
-          <label htmlFor="password">Password</label>
-          <input type="password" id="password" placeholder="Enter your password" required />
-          <div className="forgot-password">
-            <a href="#">Forgot password?</a>
-          </div>
-          <button type="submit">Sign In</button>
-        </form>
       </div>
     </div>
   );

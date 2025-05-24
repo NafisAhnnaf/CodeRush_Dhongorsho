@@ -14,6 +14,7 @@ function Navbar() {
                     </div>
                 </Link>
                 <Link to="/contact"><p>Contact</p></Link>
+                <Link to="/dashboard"><p>Dashboard</p></Link>
             </div>
 
             <div className="center">

@@ -9,14 +9,18 @@ import Contact from './pages/Contact'
 import Cart from './pages/Cart'
 import Shop from './shop/Shop'
 import Chatbot from './components/Chatbot'
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import Dashboard from './dashboard/Dashboard'
 
 function App() {
   return (
     <Router>
       <Navbar />
       <Routes>
-        <Route path='/cart' element={<Cart/>} />
         <Route path="/" element={<MainPage />} />
+        <Route path='/cart' element={<Cart/>} />
+        <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/signup" element={<SignupPage />} />
         <Route path="/about" element={<About />} />

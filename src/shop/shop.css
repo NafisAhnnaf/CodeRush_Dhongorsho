@@ -1,0 +1,46 @@
+@import url('https://fonts.googleapis.com/css2?family=Smooch+Sans:wght@100..900&family=WDXL+Lubrifont+TC&display=swap');
+
+.shop-mains {
+  padding: 2rem;
+  font-family: 'Smooch Sans', sans-serif;
+}
+
+.shop-mains-upper {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.typing-heading {
+  font-size: 2.5rem;
+  font-family: 'WDXL Lubrifont TC', sans-serif;
+  color: #1f2937;
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: 0.15em solid transparent;
+}
+
+.filters {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.filters label {
+  display: flex;
+  flex-direction: column;
+  font-weight: bold;
+}
+
+h2 {
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+.product-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 1rem;
+    gap: 1rem;
+  }
+  
