@@ -1,0 +1,22 @@
+{
+  "products": [],
+  "statistics": {
+    "total_images": 3,
+    "successful_analyses": 0,
+    "average_values": {
+      "overall": 0,
+      "by_category": {},
+      "by_condition": {}
+    },
+    "value_ranges": {
+      "overall": {
+        "min": 0,
+        "max": 0
+      },
+      "by_category": {}
+    },
+    "category_distribution": {},
+    "condition_distribution": {}
+  },
+  "status": "success"
+}

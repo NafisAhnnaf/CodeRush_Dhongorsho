@@ -1,0 +1,42 @@
+{
+  "products": [
+    {
+      "image": "product.png",
+      "product_type": "phone",
+      "condition": 4,
+      "condition_description": "Good condition with minor wear",
+      "value_estimate": "70-85% of original value",
+      "confidence": 0.8952026963233948
+    },
+    {
+      "image": "Screenshot 2025-05-24 at 7.16.16\u202fPM.png",
+      "product_type": "phone",
+      "condition": 4,
+      "condition_description": "Good condition with minor wear",
+      "value_estimate": "70-85% of original value",
+      "confidence": 0.9838389158248901
+    },
+    {
+      "image": "Screenshot 2025-05-24 at 7.15.53\u202fPM.png",
+      "product_type": "phone",
+      "condition": 4,
+      "condition_description": "Good condition with minor wear",
+      "value_estimate": "70-85% of original value",
+      "confidence": 0.9673253297805786
+    }
+  ],
+  "summary": {
+    "total_images": 3,
+    "successful_analyses": 3,
+    "average_condition": 4.0,
+    "average_value": 75.0,
+    "condition_distribution": {
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 3,
+      "5": 0
+    },
+    "avg-resale-price": 0
+  }
+}

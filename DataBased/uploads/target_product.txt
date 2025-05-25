@@ -1,0 +1,15 @@
+{
+    "products": [
+      {
+        "product_id": "P003",
+        "product_name": "Sony WH-1000XM4 Headphones",
+        "category": "Audio",
+        "brand": "Sony",
+        "price": 279.99,
+        "condition": "New",
+        "year": 2023,
+        "description": "Noise-cancelling, black, unopened box",
+        "seller_rating": 4.9
+      },
+    ]
+}
