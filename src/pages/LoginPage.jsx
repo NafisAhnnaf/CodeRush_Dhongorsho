@@ -23,13 +23,13 @@ function LoginPage() {
   const [email, setEmail]= useState('');
   const [password, setPassword]= useState('');
   const navigate = useNavigate();
+
   const handleLogin = async (e)=>{
     e.preventDefault();
     try {
       const res = await axios.post(`${backend}/login`, { em: email, ps: password });
       alert("Logged in successfully");
       localStorage.setItem("userID", res.data.id);
-      onLogin(res.data.id); // <-- call parent callback
       navigate(`/profile/${res.data.id}`);
     }catch(err){
       if(err.response){

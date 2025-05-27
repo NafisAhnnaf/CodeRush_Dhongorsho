@@ -10,21 +10,13 @@ import Contact from './pages/Contact';
 import Cart from './pages/Cart';
 import Shop from './shop/Shop';
 import Chatbot from './components/Chatbot';
-import Dashboard from './dashboard/Dashboard';
 import Upload from './upload/Upload';
 import product1 from './assets/shoe.jpg';
 import Profile from './pages/Profile';
 import Auth from './components/Auth';
 import ProductTemplate from './pages/ProductTemplate';
 
-const initialProducts = [
-  { id: 1, name: 'Smartphone', category: 'Electronics', price: 299, image: product1 },
-  { id: 2, name: 'Headphones', category: 'Accessories', price: 99, image: product1 },
-  { id: 3, name: 'Notebook', category: 'Stationaries', price: 5, image: product1 },
-  { id: 4, name: 'Pen Set', category: 'Stationaries', price: 10, image: product1 },
-  { id: 5, name: 'Math Tutoring', category: 'Tutoring', price: 50, image: product1 },
-  { id: 6, name: 'Science Tutoring', category: 'Tutoring', price: 60, image: product1 },
-];
+const initialProducts=[];
 
 const backend = import.meta.env.VITE_BACKEND;
 
@@ -55,12 +47,12 @@ function App() {
           } />
           <Route path="/" element={<MainPage />} />
           <Route path="/cart" element={<Cart />} />
-          <Route path="/dashboard/:id" element={<Dashboard />} />
           <Route path="/marketplace" element={<Marketplace />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/shop" element={<  Shop products={products} />} />
           <Route path="/chatbot" element={<Chatbot />} />
-          <Route path="/product_template" element={<ProductTemplate />} />
+          <Route path="/product/:id" element={<ProductTemplate />} />
+          <Route path='/profile/:id' element={<Profile/>}/>
         </Route>
       </Routes>
       
