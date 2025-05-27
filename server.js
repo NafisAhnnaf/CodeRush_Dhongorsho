@@ -9,7 +9,7 @@ const path = require('path')
 require('dotenv').config();
 
 const host = process.env.HOST|| '0.0.0.0';
-const port = process.env.PORT || 8001;
+const port = process.env.PORT || 8000;
 const mongo = process.env.MONGO_URI;
 
 const app = express();
@@ -213,6 +213,6 @@ app.patch('/user/:id', async(req, res)=>{
 })
 
 
-app.listen(port, host, ()=>{
+app.listen(port, ()=>{
     console.log(`Server running on local machine at ${host}:${port}`);
 });
