@@ -1,0 +1,27 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.dashboard-mains{
+    background-color: rgb(19, 28, 53);
+    height: 100vh;
+    width: 20vw;
+    font-family: Helvetica;
+    padding: 10px;
+    color: rgb(220, 219, 218);
+    text-align: center;
+}
+
+.dashboard-mains p{
+    margin-top: 2rem;
+    margin-left: 20%;
+    border-bottom: 1px solid;
+    align-items: center;
+    width: fit-content;
+}
+
+.dashboard-mains p:hover{
+    scale: 1.1;
+    cursor: pointer;
+    animation: all 2s ease;
+}

@@ -1,0 +1,147 @@
+
+.MainBody {
+  background: linear-gradient(135deg, #dbeafe, #e0f2fe, #f0f9ff);
+  font-family: 'WDXL Lubrifont TC', sans-serif;
+  align-items: center;
+  text-align: center;
+  overflow: scroll;
+}
+
+
+/* Hero Section */
+.intro-content {
+  margin-top: 2rem;
+  animation: fadeIn 1.8s ease-in-out;
+}
+
+.intro-text h2 {
+  font-size: 2.5rem;
+  color: #1f2937;
+  animation: slideUp 0.8s ease forwards;
+}
+
+.hero-img {
+  width: 300px;
+  margin-top: 2rem;
+}
+
+.explore {
+  margin-top: 1.6rem;
+}
+
+.shop-btn {
+  background-color: #2563eb;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.shop-btn:hover {
+  background-color: #1d4ed8;
+  transform: translateY(-2px);
+}
+
+/* Featured Section */
+.features-section, .trending-section, .newsletter {
+  margin: 4rem 0;
+}
+
+.features-section h3,
+.trending-section h3,
+.newsletter h3 {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+}
+
+.categories, .trending-products {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.category-card, .product-card {
+  background: white;
+  padding: 1rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  transition: transform 0.2s ease;
+}
+
+.category-card:hover,
+.product-card:hover {
+  transform: scale(1.05);
+}
+
+.category-card img, .product-card img {
+  width: 80px;
+  margin-bottom: 0.5rem;
+}
+
+/* Newsletter */
+.newsletter form {
+  margin-top: 1rem;
+}
+
+.newsletter input[type="email"] {
+  padding: 0.5rem;
+  width: 250px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+.newsletter button {
+  padding: 0.5rem 1rem;
+  background-color: #2563eb;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  margin-left: 1rem;
+  cursor: pointer;
+}
+
+.newsletter button:hover {
+  background-color: #1d4ed8;
+}
+
+/* Footer */
+.footer {
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid #ccc;
+  font-size: 0.9rem;
+}
+
+.socials {
+  margin-top: 0.5rem;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.socials img {
+  width: 24px;
+  height: 24px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .intro-text h2 {
+    font-size: 2rem;
+  }
+  .hero-img {
+    width: 200px;
+  }
+  .newsletter input {
+    width: 80%;
+    margin-bottom: 0.5rem;
+  }
+  .newsletter button {
+    margin-left: 0;
+    margin-top: 0.5rem;
+  }
+}

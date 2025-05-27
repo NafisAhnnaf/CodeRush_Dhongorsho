@@ -1,0 +1,148 @@
+@import url('https://fonts.googleapis.com/css2?family=Smooch+Sans:wght@100..900&display=swap');
+
+*{
+box-sizing: border-box;
+margin: 0;
+padding: 0;
+}
+
+body {
+  font-family: 'Smooch Sans', sans-serif;
+}
+
+.signup-container {
+  display: flex;
+  flex-direction: row;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.left-panel {
+  flex: 1;
+  background-color: #f9fafb;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  overflow-y: auto;
+  overflow: scroll;
+}
+
+.signup-form {
+  width: 100%;
+  top: -250px;
+  max-width: 400px;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+}
+
+.signup-form h2 {
+    margin-top: 1rem;
+  text-align: center;
+  font-size: 2rem;
+  color: #111827;
+}
+
+.signup-form label {
+  margin-top: 1rem;
+  font-weight: 600;
+  color: #111827;
+}
+
+.signup-form input {
+  padding: 0.6rem;
+  margin-top: 0.2rem;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  outline: none;
+}
+
+.signup-form button {
+  margin-top: 2rem;
+  padding: 0.8rem;
+  background-color: #111827;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.signup-form button:hover {
+  background-color: #2563eb;
+}
+
+.right-panel {
+  flex: 1;
+  position: relative;
+  background-color: #1f2937;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.particles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  z-index: 1;
+}
+
+.overlay {
+  position: relative;
+  z-index: 2;
+  color: white;
+  text-align: left;
+  padding: 1rem;
+  max-width: 90%;
+}
+
+.company-name {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.punchline-type {
+  font-size: 1.3rem;
+  opacity: 0.85;
+}
+
+@media (max-width: 768px) {
+  .signup-container {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .left-panel, .right-panel {
+    width: 100%;
+    height: auto;
+    min-height: 50vh;
+  }
+
+  .right-panel {
+    padding: 2rem 1rem;
+  }
+
+  .overlay {
+    top: auto;
+    left: auto;
+    position: relative;
+    text-align: center;
+    padding: 1rem;
+  }
+
+  .company-name {
+    font-size: 2rem;
+  }
+
+  .punchline-type {
+    font-size: 1rem;
+  }
+}
